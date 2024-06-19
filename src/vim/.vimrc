@@ -1,0 +1,85 @@
+" ============================================================================
+" `.vimrc`
+"
+" Overview:
+"   This file contains configurations for Vim to maintain consistent settings
+"   across different systems.
+"
+" Author:
+"   devinci-it — 2024
+"
+" Repository:
+"   https://github.com/devinci-it/dotfiles.git
+"
+" Last Updated:
+"  2024-06-18
+" ============================================================================
+
+" ============================================================================
+" Vim Configuration
+" ============================================================================
+
+" Enable line numbers and relative line numbers
+set number          " Show line numbers
+set relativenumber  " Show relative line numbers
+
+" Enable syntax highlighting
+syntax on
+
+" Set tabs and indentation
+set tabstop=4       " Number of spaces that a <Tab> in the file counts for
+set shiftwidth=4    " Size of an indent
+set expandtab       " Expand <Tab> to spaces
+set autoindent      " Enable auto-indentation based on previous line
+
+" ============================================================================
+" Key Mappings
+" ============================================================================
+
+" Map Option+e to Esc (normal mode)
+noremap <A-e> <Esc>
+cnoremap <A-e> <C-c>  " Handle in command-line mode
+
+" Map Option+e to Esc (insert mode)
+inoremap <A-e> <Esc>
+
+" Map Option+r to enter Replace mode (normal mode)
+noremap <A-r> R
+
+" Go to the beginning of the line (normal mode)
+noremap <Home> 0
+
+" Go to the beginning of the line (insert mode)
+inoremap <Home> <C-o>0
+
+" Go to the end of the line (normal mode)
+noremap <End> $
+
+" Go to the end of the line (insert mode)
+inoremap <End> <C-o>$
+
+" ============================================================================
+" Additional Useful Mappings
+" ============================================================================
+
+" Go to the beginning of the file
+noremap gg gg
+
+" Go to the end of the file
+noremap G G
+
+" Go to the first non-blank character of the line
+noremap ^ ^
+
+" Move the cursor to the top of the screen
+noremap H H
+
+" Move the cursor to the middle of the screen
+noremap M M
+
+" Move the cursor to the bottom of the screen
+noremap L L
+
+" ============================================================================
+" End of Vim Configuration
+" ============================================================================

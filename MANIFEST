@@ -2,3 +2,5 @@
 LICENSE
 MANIFEST
 README.md
+src/vim/.vimrc
+src/vim/README.md
