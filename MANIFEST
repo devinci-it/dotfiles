@@ -2,5 +2,14 @@
 LICENSE
 MANIFEST
 README.md
-src/vim/.vimrc
+src/bash/README.md
+src/bash/alias.d/MANIFEST.yml
+src/bash/alias.d/aka.alias
+src/bash/aliasrc
+src/bash/bin/alias_conflict.sh
+src/bash/bin/setup_alias.sh
+src/bash/install.sh
+src/bash/stubs/alias.stub
+src/bash/stubs/func-alias.stub
 src/vim/README.md
+src/vim/vimrc

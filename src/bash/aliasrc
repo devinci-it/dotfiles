@@ -1,0 +1,26 @@
+#!/bin/bash
+
+###########################################################
+# Alias Configuration Script: aliasrc
+# Description: Central script to source executable alias files in alias.d directory
+# Author: Your Name
+# Date: $(date +"%Y-%m-%d")
+# Version: 1.0
+#
+# This script sources executable alias files in the alias.d directory
+# and checks against a manifest file for allowed aliases. It also echoes
+# any rejected files.
+#
+###########################################################
+
+# Directory containing alias files
+ALIAS_SRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ALIAS_DIR="$ALIAS_SRC/.local/opt/alias/alias.d"
+# Array to hold rejected files
+# Source all executable alias files in alias.d
+for alias_file in "$ALIAS_DIR"/*.alias; do
+    # Check if file exists and has execute permissions
+    if [[ -f "$alias_file" && -r "$alias_file" ]]; then
+        source "$alias_file"
+    fi
+done

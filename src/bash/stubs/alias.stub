@@ -1,0 +1,15 @@
+#!/bin/bash
+
+###########################################################
+# Alias Script: <alias-name>
+# Description: <Description of your alias>
+# Author: devinci-it
+# Date: $(date +"%Y-%m-%d")
+# Version: 1.0
+#
+###########################################################
+
+# Alias definition
+alias <alias-name>="<command>"
+
+# End of alias script
