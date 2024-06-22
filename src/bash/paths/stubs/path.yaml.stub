@@ -1,0 +1,19 @@
+# This YAML file defines paths to be added to the system PATH.
+# Each path entry includes details such as description, priority, and enabled status.
+#
+# Usage:
+# - Fill in each 'path' entry with the directory path you want to include in PATH.
+# - Provide a brief 'description' of what each path contains or is used for.
+# - Set 'priority' to a numeric value (lower number means higher priority in PATH).
+# - Use 'enabled: true' to include the path in PATH or 'enabled: false' to exclude it.
+
+;paths:
+;  - path: /path/to/your/directory
+;    description: Example description of what this path contains
+;    priority: 10
+;    enabled: true
+
+; - path: /disabled/path
+;   description: Disabled path example
+;   priority: 8
+;   enabled: false
