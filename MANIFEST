@@ -13,6 +13,7 @@ src/bash/aliases/stubs/alias.stub
 src/bash/aliases/stubs/func-alias.stub
 src/bash/bashrc
 src/bash/bin/display_line.sh
+src/bash/bin/env
 src/bash/bin/logger
 src/bash/install.sh
 src/bash/paths/install_path.sh
