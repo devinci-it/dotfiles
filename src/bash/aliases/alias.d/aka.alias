@@ -10,7 +10,7 @@
 ###########################################################
 # Get the directory of the alias script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ALIAS_SCRIPT="$SCRIPT_DIR/../bin/setup_alias.sh"
+ALIAS_SCRIPT="$SCRIPT_DIR/../scripts/setup_alias.sh"
 
 
 function_aka(){

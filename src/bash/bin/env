@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Define paths
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TEST_DIR="$SCRIPT_DIR/../test"
+ORIGINAL_HOME="$HOME"
+
+# Function to activate the environment
+activate_env() {
+    # Create test directory if it doesn't exist
+    mkdir -p "$TEST_DIR"
+    
+    # Set HOME to test directory
+    export HOME="$TEST_DIR"
+    
+    echo "Activated environment: HOME set to $HOME"
+}
+
+# Function to deactivate the environment
+deactivate_env() {
+    # Unset HOME to revert to original value
+    if [[ -n "$ORIGINAL_HOME" ]]; then
+        export HOME="$ORIGINAL_HOME"
+    else
+        unset HOME
+    fi
+    
+    # Clean up test directory if it was created
+    if [[ -d "$TEST_DIR" ]]; then
+#        rm -rf "$TEST_DIR"
+        echo "Test directory $TEST_DIR deleted."
+    fi
+    
+    echo "Deactivated environment: HOME unset."
+}
+
+# Main script logic
+if [[ "$1" == "activate" ]]; then
+    activate_env
+elif [[ "$1" == "deactivate" ]]; then
+    deactivate_env
+else
+    echo "Usage: $0 {activate|deactivate}"
+    exit 1
+fi
