@@ -1,37 +1,39 @@
 #!/bin/bash
 
+: <<'ENDCOMMENT'
 ###########################################################
-# Alias Script: <alias-name>
-# Description: <Description of your alias>
-# Author: devinci-it
-# Date: $(date +"%Y-%m-%d")
-# Version: 1.0
-#
-# Usage:
-#   <alias-name> <argument>
-#
-# Example:
-#   <alias-name> value
-#
-###########################################################
+Alias Script: <alias-name>
+Description: <Description of your alias>
+Author: devinci-it
+Date: $(date +"%Y-%m-%d")
+Version: 1.0
 
-# Function-like alias definition
-setup_alias() {
-    local command="$1"
+Usage:
+  <alias-name> <arguments>
+
+Arguments:
+<arguments-list>
+
+Example:
+  <alias-name> <arguments-example>
+###########################################################
+ENDCOMMENT
+
+<function-name>() {
 
     if [ -z "$1" ]; then
-        echo "Usage: $0 <argument>"
+        echo "Usage: $0 <arguments>"
         return 1
     fi
 
     # Process argument to prevent injection vulnerabilities
-    local processed_arg="$(printf "%q" "$1")"
+    local processed_arg
+    processed_arg="$(printf "%q" "$1")"
 
-    # Command definition
-    alias <alias-name>="function __<alias-name>() { $command \"$processed_arg\"; }; __<alias-name>"
+
+    <command> "$processed_arg"
 }
 
-# Call setup_alias with your command
-setup_alias "<command>"
+alias <alias-name>='<function-name>'
 
-# End of alias script
+# End of script
