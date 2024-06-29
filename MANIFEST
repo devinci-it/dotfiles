@@ -21,8 +21,13 @@ src/bash/bin/display_line.sh
 src/bash/bin/env
 src/bash/bin/logger
 src/bash/install.sh
+src/bash/paths/README.md
+src/bash/paths/install.sh
 src/bash/paths/install_path.sh
+src/bash/paths/path.d/00_system.path
+src/bash/paths/path.d/MANIFEST.yml
 src/bash/paths/pathrc
+src/bash/paths/scripts/path_manager.sh
 src/bash/paths/stubs/path.yaml.stub
 src/services/README.md
 src/services/netatalk/README.md

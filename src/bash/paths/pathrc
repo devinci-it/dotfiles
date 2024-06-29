@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Path to MANIFEST.yml
+MANIFEST_FILE="$HOME/.path.d/MANIFEST.yml"
+
+# Function to source paths from MANIFEST_FILE
+source_paths() {
+  echo "Sourcing paths from MANIFEST_FILE: $MANIFEST_FILE"
+
+  # Check if MANIFEST_FILE exists
+  if [ ! -f "$MANIFEST_FILE" ]; then
+    echo "MANIFEST_FILE not found: $MANIFEST_FILE"
+    return
+  fi
+
+  # Read MANIFEST_FILE line by line
+  while IFS= read -r line; do
+    if [[ "$line" =~ ^filename:\ (.*)$ ]]; then
+      filename="${BASH_REMATCH[1]}"
+      read -r priority
+      read -r abs_path
+      read -r hash
+      
+      # Source the path file if it exists and is readable
+      if [ -f "$abs_path" ] && [ -r "$abs_path" ]; then
+        echo "Sourcing path: $filename"
+        source "$abs_path"
+      else
+        echo "Path file not found or not readable: $abs_path"
+      fi
+    fi
+  done < "$MANIFEST_FILE"
+}
+
+# Source paths from MANIFEST_FILE
+source_paths
