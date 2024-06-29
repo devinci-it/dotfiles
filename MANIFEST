@@ -3,12 +3,17 @@ LICENSE
 MANIFEST
 README.md
 src/bash/README.md
+src/bash/aliases/README.md
 src/bash/aliases/alias.d/MANIFEST.yml
 src/bash/aliases/alias.d/aka.alias
 src/bash/aliases/aliasrc
 src/bash/aliases/install_alias.sh
+src/bash/aliases/logs/.gitignore
 src/bash/aliases/scripts/alias_conflict.sh
+src/bash/aliases/scripts/alias_generator.sh
+src/bash/aliases/scripts/function_alias.sh
 src/bash/aliases/scripts/setup_alias.sh
+src/bash/aliases/scripts/utility_functions.sh
 src/bash/aliases/stubs/alias.stub
 src/bash/aliases/stubs/func-alias.stub
 src/bash/bashrc
@@ -19,5 +24,8 @@ src/bash/install.sh
 src/bash/paths/install_path.sh
 src/bash/paths/pathrc
 src/bash/paths/stubs/path.yaml.stub
+src/services/README.md
+src/services/netatalk/README.md
+src/services/netatalk/install.sh
 src/vim/README.md
 src/vim/vimrc
