@@ -1,0 +1,5 @@
+#! /bin/bash
+
+if [ -f "$HOME/.aliasrc" ]; then
+    source "$HOME/.aliasrc"
+fi
