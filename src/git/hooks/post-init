@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Example post-init hook script
+
+echo "Running post-init hook script..."
+
+# Perform additional setup tasks here
+echo "Performing setup tasks..."
+
+# Example: Echo current directory
+echo "Current directory: $(pwd)"
+
+# Example: List files in current directory
+ls -la
+
+echo "Post-init hook script execution complete."

@@ -1,0 +1,122 @@
+################################################################################
+# Project Manifest
+#
+# Overview:
+#   This file provides an overview of the project's structure, contents, and
+#   important details for developers and contributors.
+#
+# Author:
+#   [Your Name]
+#
+# Repository:
+#   [URL to the project's repository]
+#
+# Last Updated:
+#   [YYYY-MM-DD]
+################################################################################
+
+# Table of Contents:
+#   1. Project Description
+#   2. Directory Structure
+#   3. Included Files
+#   4. Custom Scripts
+#   5. Configuration Files
+#   6. Hooks
+#   7. Stub Files
+#   8. Additional Notes
+#   9. Revision History
+
+################################################################################
+
+# 1. Project Description
+# -----------------------
+# [Brief description of the project's purpose, scope, and objectives.]
+
+################################################################################
+
+# 2. Directory Structure
+# -----------------------
+# [Describe the main directories and their purposes within the project.]
+
+################################################################################
+
+# 3. Included Files
+# -----------------
+# [List of essential files included in the project, categorized as needed.]
+
+# Example:
+# - README.md
+# - LICENSE
+# - requirements.txt
+# - main.py
+# - utils/
+#   - helper_functions.py
+#   - constants.py
+# - tests/
+#   - test_main.py
+#   - test_utils.py
+
+################################################################################
+
+# 4. Custom Scripts
+# -----------------
+# [List any custom scripts or executables included in the project.]
+
+# Example:
+# - scripts/
+#   - deploy.sh
+#   - cleanup.py
+
+################################################################################
+
+# 5. Configuration Files
+# ----------------------
+# [List configuration files used in the project, such as settings, templates, etc.]
+
+# Example:
+# - config/
+#   - settings.yml
+#   - templates/
+#     - email_template.html
+#     - report_template.docx
+
+################################################################################
+
+# 6. Hooks
+# --------
+# [List any hooks or scripts used as Git hooks for the project.]
+
+# Example:
+# - hooks/
+#   - pre-commit
+#   - post-release
+
+################################################################################
+
+# 7. Stub Files
+# -------------
+# [List any stub files or templates used in the project.]
+
+# Example:
+# - stubs/
+#   - header.txt
+#   - footer.txt
+
+################################################################################
+
+# 8. Additional Notes
+# -------------------
+# [Include any additional notes or considerations for developers and contributors.]
+
+################################################################################
+
+# 9. Revision History
+# --------------------
+# [Track revisions made to the `MANIFEST` file and major updates to the project.]
+
+# Example:
+# - [YYYY-MM-DD] Initial creation
+# - [YYYY-MM-DD] Added configuration files section
+# - [YYYY-MM-DD] Updated directory structure description
+
+################################################################################

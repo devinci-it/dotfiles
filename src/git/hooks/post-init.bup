@@ -1,0 +1,45 @@
+
+#!/bin/bash
+
+######################################################################
+# Git Post-init Script
+#
+# Description:
+#   This script is executed after initializing a Git repository. It is
+#   typically used to set up the repository environment, such as configuring
+#   Git hooks, initializing submodules, or applying repository-specific settings.
+#
+# Usage:
+#   This script is automatically triggered after running the 'git init' command
+#   to initialize a new Git repository. It can be customized to perform various
+#   actions based on the requirements of the repository.
+#
+# Author:
+#   devinci-it
+#
+# Date:
+#   2024
+#
+######################################################################
+# Retrieve project root directory
+echo "EXECUTING POST-INIT HOOK SCRIPT"
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+
+# Define directory for custom scripts relative to .git/hooks/
+SCRIPT_DIR="$PROJECT_ROOT/.git/hooks/custom-scripts/"
+
+# List of scripts to check and execute
+SCRIPTS=("git-boot.sh")
+
+# Check if script exists and execute if found
+for script in "${SCRIPTS[@]}"; do
+    script_path="${SCRIPT_DIR}/${script}"
+
+    if [ -f "$script_path" ]; then
+        echo "Executing script: $script"
+        chmod +x "$script_path"  # Ensure script is executable
+        "$script_path"
+    else
+        echo "Script not found: $script"
+    fi
+done

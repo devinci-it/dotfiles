@@ -1,0 +1,68 @@
+#!/bin/bash
+
+######################################################################
+# Git Pre-commit Hook Script
+#
+# Description:
+#   This script is a Git pre-commit hook that is executed before creating
+#   a commit. It can be used to perform checks on the changes to be committed
+#   and optionally prevent the commit if certain conditions are not met.
+#
+# Usage:
+#   This script is automatically triggered before creating a commit. It can
+#   be used to run pre-commit checks or tests to ensure the quality of the commit.
+#
+# Author:
+#  devinci-it - 2024
+######################################################################
+
+# Function to get script directory
+get_script_dir() {
+    local SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+    echo "$SCRIPT_DIR"
+}
+
+# Function to update MANIFEST file and commit amend
+update_manifest_and_commit_amend() {
+    local SCRIPT_DIR="$(get_script_dir)"
+    local SCRIPT_PATH="$SCRIPT_DIR/custom-scripts/update_manifest.sh"
+
+    # Check for lockfile
+    local LOCKFILE="/tmp/update_manifest.lock"
+    if [ -f "$LOCKFILE" ]; then
+        echo "Lockfile exists, exiting."
+        exit 1
+    fi
+
+    # Create lockfile
+    touch "$LOCKFILE"
+
+    # Print message
+    echo "Updating MANIFEST file and amending previous commit..."
+
+    # Call the script to update MANIFEST
+    "$SCRIPT_PATH"
+
+    # Check if this is the initial commit
+    if ! git show-ref --quiet --verify -- HEAD; then
+        echo "Initial commit detected. Skipping commit amend."
+        rm "$LOCKFILE"
+        exit 0
+    fi
+
+    # Commit amend to add changes to previous commit
+    git commit --amend --no-edit
+
+    # Remove the lockfile
+    rm "$LOCKFILE"
+
+    echo "Commit amend complete."
+}
+
+# ---------------------------------------------------
+# Call function to update MANIFEST and amend commit
+# ---------------------------------------------------
+
+update_manifest_and_commit_amend
+# ----------------------------------------------------
+

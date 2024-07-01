@@ -1,0 +1,39 @@
+#!/bin/bash
+
+######################################################################
+# Git Prepare-commit-msg Hook Script
+#
+# Description:
+#   This script is a Git prepare-commit-msg hook that is executed after
+#   the commit message editor is opened, but before the commit message
+#   is finalized. It can be used to modify or append to the commit message
+#   based on certain conditions or requirements.
+#
+# Usage:
+#   This script is automatically triggered after the commit message editor
+#   is opened, allowing modifications to the commit message before finalization.
+#
+# Author:
+#   [Your Name]
+#
+# Date:
+#   [Date]
+#
+######################################################################
+#$(git rev-parse --show-toplevel)/.git/hooks/custom-scripts/append-changelog.sh
+
+# Get the directory of the current script (prepare-commit-msg.sh)
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Call the script to generate the commit message template
+#!/bin/bash
+
+# Path to the commit message file
+COMMIT_MSG_FILE=$1
+
+# Path to the generate_commit_template.sh script
+TEMPLATE_SCRIPT_PATH="$(dirname "$0")/custom-scripts/generate_commit_template.sh"
+
+# Generate the commit message template
+"$TEMPLATE_SCRIPT_PATH" "$COMMIT_MSG_FILE"
+

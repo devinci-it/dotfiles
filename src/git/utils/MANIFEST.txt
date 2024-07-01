@@ -1,0 +1,3 @@
+get_template_dir.sh
+get_git_root_dir.sh
+
