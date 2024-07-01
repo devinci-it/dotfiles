@@ -80,6 +80,11 @@ noremap M M
 " Move the cursor to the bottom of the screen
 noremap L L
 
+" Toggle Caps Lock to enter command-line mode
+nnoremap <CapsLock> :
+inoremap <CapsLock> <Esc>:
+
 " ============================================================================
 " End of Vim Configuration
 " ============================================================================
+
