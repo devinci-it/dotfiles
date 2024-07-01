@@ -59,5 +59,17 @@ src/git/utils/index.sh
 src/services/README.md
 src/services/netatalk/README.md
 src/services/netatalk/install.sh
+src/system/administration/user_management/MANIFEST.md
+src/system/administration/user_management/README.md
+src/system/administration/user_management/add_user.sh
+src/system/administration/user_management/delete_user.sh
+src/system/administration/user_management/index.sh
+src/system/administration/user_management/primary_group.sh
+src/system/administration/user_management/rename_user.sh
+src/system/administration/user_management/sync.sh
+src/system/administration/user_management/user_info.sh
+src/system/services/README.md
+src/system/services/netatalk/README.md
+src/system/services/netatalk/install.sh
 src/vim/README.md
 src/vim/vimrc
