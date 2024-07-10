@@ -1,0 +1,63 @@
+# Pipfile for managing Python dependencies and scripts using Pipenv
+
+# Source configuration for Python packages
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+# Additional repositories
+#[[source]]
+#name = "custom_repo"
+#url = "https://example.com/custom-repo/"
+#verify_ssl = true
+
+# Production dependencies (specify specific package versions here if needed)
+[packages]
+# package_name = "*"
+
+# Development dependencies
+# These packages are used for development purposes to enhance testing, code quality, and automation.
+[dev-packages]
+# HTTP library for making requests
+requests = "*"
+# Library for loading environment variables from .env files
+python-dotenv = "*"
+# Testing framework
+pytest = "*"
+# PEP 8 linting tool
+flake8 = "*"
+# Automatic code formatting tool
+autopep8 = "*"
+
+# Custom scripts for automation
+[scripts]
+# Run tests with pytest
+test = "pytest"
+# Run tests with coverage
+coverage = "pytest --cov=your_module"
+# Check code against PEP 8 standards
+lint = "flake8 ."
+# Auto-format code with autopep8
+format = "autopep8 --recursive --in-place ."
+# Update packages in Pipfile
+update-packages = "pipenv update"
+# Build your project
+build = "python setup.py build"
+# Clean artifacts
+clean-artifacts = "python setup.py clean --all"
+
+# Pipenv specific configurations
+[pipenv]
+# Custom shell prompt
+fancy_prompt = "{project_name} {python_version} ({virtualenv_name})"
+# Network timeout in seconds
+timeout = 600
+
+# Project metadata
+[metadata]
+# Repository URL
+repository = "https://github.com/devinci-it/{project_name}"
+# Authors
+authors = ["devinci-it"]
+
