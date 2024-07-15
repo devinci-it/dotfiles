@@ -5,7 +5,7 @@ set -e
 STUBS_DIR="$(dirname "${BASH_SOURCE[0]}")/../stubs"
 ALIAS_DIR="$(dirname "${BASH_SOURCE[0]}")/../alias.d"
 MANIFEST_FILE="$ALIAS_DIR/MANIFEST.yml"
-STUB_FILE_ALIAS="$STUBS_DIR/alias.stub"
+STUB_FILE_ALIAS="$STUBS_DIR/aliasng.stub"
 STUB_FILE_FUNCTION="$STUBS_DIR/func-alias.stub"
 
 ALIAS_FILE=''
