@@ -55,6 +55,9 @@ src/git/utils/MANIFEST.txt
 src/git/utils/get_git_root.sh
 src/git/utils/get_template_dir.sh
 src/git/utils/index.sh
+src/python/Pipfile
+src/python/README.md
+src/python/installation.sh
 src/system/administration/user_management/MANIFEST.md
 src/system/administration/user_management/README.md
 src/system/administration/user_management/add_user.sh
