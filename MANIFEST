@@ -15,6 +15,7 @@ src/bash/aliases/scripts/function_alias.sh
 src/bash/aliases/scripts/setup_alias.sh
 src/bash/aliases/scripts/utility_functions.sh
 src/bash/aliases/stubs/alias.stub
+src/bash/aliases/stubs/aliasng.stub
 src/bash/aliases/stubs/func-alias.stub
 src/bash/bashrc
 src/bash/bin/display_line.sh
@@ -67,9 +68,6 @@ src/system/administration/user_management/primary_group.sh
 src/system/administration/user_management/rename_user.sh
 src/system/administration/user_management/sync.sh
 src/system/administration/user_management/user_info.sh
-src/system/services/README.md
-src/system/services/netatalk/README.md
-src/system/services/netatalk/install.sh
 src/vim/README.md
 src/vim/install.sh
 src/vim/vimrc
