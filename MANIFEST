@@ -59,6 +59,9 @@ src/git/utils/index.sh
 src/python/Pipfile
 src/python/README.md
 src/python/installation.sh
+src/system/administration/.env
+src/system/administration/storage/refs/lvm-wallkthrough.md
+src/system/administration/user_management/.env
 src/system/administration/user_management/MANIFEST.md
 src/system/administration/user_management/README.md
 src/system/administration/user_management/add_user.sh
@@ -68,6 +71,13 @@ src/system/administration/user_management/primary_group.sh
 src/system/administration/user_management/rename_user.sh
 src/system/administration/user_management/sync.sh
 src/system/administration/user_management/user_info.sh
+src/system/mariadb/README.md
+src/system/mariadb/config.ini
+src/system/mariadb/cronjob_script_generator.sh
+src/system/mariadb/database_backup.sh
+src/system/mariadb/database_init.sh
+src/system/web/certbot/installation.sh
+src/system/web/certbot/renew.sh
 src/vim/README.md
 src/vim/install.sh
 src/vim/vimrc
