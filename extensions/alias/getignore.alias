@@ -1,0 +1,57 @@
+#!/bin/bash
+
+###########################################################
+# Alias Script: getignore
+# Description: Generate a .gitignore file automatically using curl utility.
+# Author: devinci-it
+# Date: $(date +"%Y-%m-%d")
+# Version: 1.1
+#
+# Usage:
+#   getignore <language>
+#
+# Example:
+#   getignore php
+###########################################################
+
+# Prevent direct execution
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "This script is intended to be sourced, not executed directly."
+    exit 1
+fi
+
+# Function to fetch the appropriate .gitignore file
+fetch_git_ignore() {
+    if [ -z "$1" ]; then
+        echo "Usage: getignore <language>"
+        echo "Example: getignore php"
+        return 1
+    fi
+
+    local language="$1"
+    local gitignore_url="https://raw.githubusercontent.com/github/gitignore/main/$language.gitignore"
+
+    case "$language" in
+        php)
+            curl -s "https://raw.githubusercontent.com/github/gitignore/main/Laravel.gitignore" -o .gitignore
+            curl -s "https://raw.githubusercontent.com/github/gitignore/main/Composer.gitignore" >> .gitignore
+            echo "Combined .gitignore for Laravel and Composer created."
+            ;;
+        *)
+            # Check if the .gitignore template exists for the given language
+            if curl --output /dev/null --silent --head --fail "$gitignore_url"; then
+                curl -s "$gitignore_url" -o .gitignore
+                echo ".gitignore for $language created."
+            else
+                echo "Error: No .gitignore template found for '$language'."
+                return 1
+            fi
+            ;;
+    esac
+}
+
+# Alias to call the fetch_git_ignore function
+alias getignore='fetch_git_ignore'
+
+# End of alias script
+

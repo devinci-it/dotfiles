@@ -1,0 +1,41 @@
+#!/bin/bash
+
+###########################################################
+# Alias Script: svc
+# Description: Shorthand for managing a specific service using systemctl.
+# Author: devinci-it
+# Date: $(date +"%Y-%m-%d")
+# Version: 1.0
+#
+# Usage:
+#   svc <start|stop|restart> <service>
+#
+# Example:
+#   svc start apache2
+###########################################################
+
+# Prevent direct execution
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "This script is intended to be sourced, not executed directly."
+    exit 1
+fi
+
+# Function to manage service with systemctl
+manage_service() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: svc <start|stop|restart> <service>"
+        return 1
+    fi
+
+    local action="$1"
+    local service="$2"
+
+    # Execute the systemctl command
+    sudo systemctl "$action" "$service"
+}
+
+# Alias to call the manage_service function
+alias svc='manage_service'
+
+# End of script
+

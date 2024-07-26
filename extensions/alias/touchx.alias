@@ -1,0 +1,51 @@
+#!/bin/bash
+
+: <<'ENDCOMMENT'
+###########################################################
+Alias Script: touchx
+Description: Function to create an executable file with default permissions 750.
+Author: devinci-it
+Date: $(date +"%Y-%m-%d")
+Version: 1.0
+
+Usage:
+  touchx path_to_file
+
+Arguments:
+  path_to_file: The path to the file to be created.
+
+Example:
+  touchx myscript.sh
+###########################################################
+ENDCOMMENT
+
+# Prevent direct execution
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "This script is intended to be sourced, not executed directly."
+    exit 1
+fi
+
+# Function to create an executable file with default permissions 750
+create_executable() {
+
+    if [ -z "$1" ]; then
+        echo "Usage: touchx path_to_file"
+        return 1
+    fi
+
+    # Process argument to prevent injection vulnerabilities
+    local filename="$1"
+
+    # Create the file using touch
+    touch "$filename"
+
+    # Set permissions to 750 (rwxr-x---)
+    chmod 750 "$filename"
+
+    echo "Executable file '$filename' created with permissions 750."
+}
+
+# Alias to call the function
+alias touchx='create_executable'
+
+# End of script

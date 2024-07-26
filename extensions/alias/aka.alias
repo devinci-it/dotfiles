@@ -1,0 +1,22 @@
+#!/bin/bash
+
+###########################################################
+# Alias Script: aka
+# Description: Execute the alias definition script. 
+# Author: devinci-it
+# Date: $(date +"%Y-%m-%d")
+# Version: 1.0
+#
+###########################################################
+# Get the directory of the alias script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ALIAS_SCRIPT="$SCRIPT_DIR/../scripts/setup_alias.sh"
+
+
+function_aka(){
+	
+	"$($ALIAS_SCRIPT)"
+}
+
+alias aka="function_aka"
+# End of alias script

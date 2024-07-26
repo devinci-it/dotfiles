@@ -1,0 +1,57 @@
+#!/bin/bash
+
+###########################################################
+# Alias Script: mkpip
+# Description: Create a Pipfile from '.Pipfile' stored in $HOME if it exists.
+# Author: devinci-it
+# Date: $(date +"%Y-%m-%d")
+# Version: 1.3
+#
+# Usage:
+#   mkpip [destination]
+#
+# Example:
+#   mkpip                # Creates Pipfile in the current directory
+#   mkpip /path/to/dir   # Creates Pipfile in the specified directory
+#   mkpip /path/to/file  # Creates Pipfile at the specified full path
+###########################################################
+
+# Prevent direct execution
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "This script is intended to be sourced, not executed directly."
+    exit 1
+fi
+
+# Function to create Pipfile from .Pipfile if it exists
+create_pipfile() {
+    local pipfile_src="$HOME/.Pipfile"
+    local pipfile_dest="$1"
+
+    # Default destination if not provided
+    if [ -z "$pipfile_dest" ]; then
+        pipfile_dest="./Pipfile"
+    fi
+
+    # Check if the destination is a directory
+    if [ -d "$pipfile_dest" ]; then
+        # Strip trailing slash from directory path if present
+        pipfile_dest=$(echo "$pipfile_dest" | sed 's:/*$::')
+        pipfile_dest="$pipfile_dest/Pipfile"
+    fi
+
+    # Validate source file existence
+    if [ ! -f "$pipfile_src" ]; then
+        echo "Error: $pipfile_src does not exist."
+        return 1
+    fi
+
+    # Copy the Pipfile to the destination
+    cp "$pipfile_src" "$pipfile_dest"
+    echo "Pipfile created from $pipfile_src to $pipfile_dest."
+}
+
+# Alias to call the create_pipfile function
+alias mkpip='create_pipfile'
+
+# End of alias script
+
