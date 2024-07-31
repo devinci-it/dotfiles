@@ -2,6 +2,12 @@
 LICENSE
 MANIFEST
 README.md
+extensions/aliases/aka.alias
+extensions/aliases/getignore.alias
+extensions/aliases/mkpip.alias
+extensions/aliases/svc.alias
+extensions/aliases/touchx.alias
+extensions/scritps/README.md
 src/bash/README.md
 src/bash/aliases/README.md
 src/bash/aliases/alias.d/MANIFEST.yml
