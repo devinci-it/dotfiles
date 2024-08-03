@@ -1,0 +1,145 @@
+#!/bin/bash
+
+: '
+A Bash script for setting up a Python virtual environment using `pyenv` and `pyenv-virtualenv`.
+
+This script creates a virtual environment for a Python project with the specified Python version using
+`pyenv virtualenv`. It defaults to the global Python version managed by `pyenv` and uses the current
+directory name as the default project name. If the specified Python version is not installed, the script
+will prompt to install it.
+
+Usage:
+    ./setup_venv.sh [project-name] [python-version]
+
+Arguments:
+    project-name    The name of the project. Defaults to the current directory name if not provided.
+    python-version  The Python version to use. Defaults to the global pyenv version if not provided.
+
+Examples:
+    ./setup_venv.sh my_project 3.8.12  # Creates a virtual environment for my_project with Python 3.8.12
+    ./setup_venv.sh                   # Creates a virtual environment with the default project name and Python version
+
+Dependencies:
+    This script requires `pyenv`, `pyenv-virtualenv`, and `python` to be installed and available in your PATH.
+'
+
+# Default values
+DEFAULT_PYTHON_VERSION=$(pyenv global)
+DEFAULT_PROJECT_NAME=$(basename "$PWD")
+VENV_DIR="$HOME/.pyenv/versions"
+PROJECT_DIR="$HOME/.pyenv/projects"
+
+# Check if pyenv is installed
+if ! command -v pyenv &> /dev/null; then
+    echo "pyenv is not installed. Please install pyenv first."
+    exit 1
+fi
+
+# Check if pyenv-virtualenv is installed
+if ! pyenv commands | grep -q "virtualenv"; then
+    echo "pyenv-virtualenv is not installed. Please install pyenv-virtualenv first."
+    exit 1
+fi
+
+# Function to install Python version using pyenv
+install_python_version() {
+    local version=$1
+    echo "Python version $version is not installed. Attempting to install..."
+    pyenv install "$version"
+}
+
+# Function to upgrade pip
+upgrade_pip() {
+    pip install --upgrade pip
+}
+
+# Function to create and activate the virtual environment using pyenv-virtualenv
+create_venv() {
+    local project_name=$1
+    local python_version=$2
+    local venv_name="${project_name}-${python_version}-venv"
+    local venv_path="$VENV_DIR/$venv_name"
+    local python_version_file="$PROJECT_DIR/$project_name.python-version"
+
+    echo "Creating virtual environment: $venv_name"
+
+    # Create virtual environment using pyenv-virtualenv
+    pyenv virtualenv "$python_version" "$venv_name"
+    if [ $? -ne 0 ]; then
+        echo "Failed to create virtual environment."
+        exit 1
+    fi
+
+    # Create project directory if it doesn't exist
+    mkdir -p "$PROJECT_DIR"
+
+    # Symlink .python-version to the project directory
+    echo "$venv_name" > "$python_version_file"
+
+    # Create a symlink in the current directory pointing to the central venv directory
+    ln -sfn "$venv_path" "$venv_name"
+
+    # Activate virtual environment
+    pyenv activate "$venv_name"
+    echo "Virtual environment activated."
+
+    # Upgrade pip
+    upgrade_pip
+
+    # Append to the activate script to touch .python-version
+    local activate_script="$venv_path/bin/activate"
+    if [ -f "$activate_script" ]; then
+        echo 'touch "$HOME/.pyenv/projects/$(basename "$python_version_file")"' >> "$activate_script"
+    fi
+}
+
+# Function to display usage
+usage() {
+    echo "Usage: $0 [project-name] [python-version]"
+    echo
+    echo "Arguments:"
+    echo "  project-name    The name of the project. Defaults to the current directory name."
+    echo "  python-version  The Python version to use. Defaults to the global pyenv version."
+    echo
+    echo "Examples:"
+    echo "  $0 my_project 3.8.12  # Creates a venv for my_project with Python 3.8.12"
+    echo "  $0               # Creates a venv with the default project name and Python version"
+    exit 1
+}
+
+# Check for help argument
+if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+    usage
+fi
+
+# Parse command-line arguments
+project_name=$DEFAULT_PROJECT_NAME
+python_version=$DEFAULT_PYTHON_VERSION
+
+if [ $# -ge 1 ]; then
+    project_name=$(echo "$1" | sed 's/[^a-zA-Z0-9_-]//g')  # Basic sanitization
+fi
+
+if [ $# -ge 2 ]; then
+    python_version=$(echo "$2" | sed 's/[^0-9.]//g')  # Basic sanitization
+fi
+
+# Check if the requested Python version is installed
+if ! pyenv versions --bare | grep -q "^$python_version$"; then
+    read -p "Python version $python_version is not installed. Do you want to install it? (y/n) " install_choice
+    if [[ $install_choice == "y" ]]; then
+        install_python_version "$python_version"
+    else
+        echo "Exiting without creating virtual environment."
+        exit 1
+    fi
+fi
+
+# Create and activate the virtual environment using pyenv-virtualenv
+create_venv "$project_name" "$python_version"
+
+# Optionally, you can install required packages here
+# pip install -r requirements.txt
+
+echo "Setup complete."
+
