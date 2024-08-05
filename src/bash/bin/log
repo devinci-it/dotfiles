@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# Main function encapsulating variable definitions
+main() {
+    # Determine the directory of the script
+    local SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+    # Define the logs directory relative to the script directory
+    local LOG_DIR="$SCRIPT_DIR/../logs"
+
+    # Ensure LOG_DIR exists
+    mkdir -p "$LOG_DIR"
+
+    # Define LOG_FILE with a date-stamped filename
+    local LOG_FILE="$LOG_DIR/$(date +'%Y-%m-%d').log"
+
+    # Default log level if not set by user (INFO by default)
+    local DEFAULT_LOG_LEVEL="${LOG_DEF_LEVEL:-1}"  # INFO
+
+    # Function to log messages
+    log_message() {
+        local log_level="$1"
+        local message="$2"
+        local timestamp="$(date +'%Y-%m-%d %H:%M:%S')"
+        echo "[$timestamp] [$log_level] $message" >> "$LOG_FILE"
+    }
+
+    # Function to map log level strings to numeric levels
+    get_log_level() {
+        local level="$1"
+        case "$level" in
+            "00-debug" | "-d" | "DEBUG" | "debug")
+                echo 0 ;;
+            "1" | "INFO" | "-i" | "info")
+                echo 1 ;;
+            "2" | "SUCCESS" | "-s" | "success")
+                echo 2 ;;
+            "3" | "WARNING" | "-w" | "warning")
+                echo 3 ;;
+            "4" | "ERROR" | "-e" | "error")
+                echo 4 ;;
+            *)
+                echo "$DEFAULT_LOG_LEVEL" ;;
+        esac
+    }
+
+    # Function to log a message with specified log level
+    log() {
+        local log_level="$(get_log_level "$1")"
+        local message="$2"
+        log_message "$log_level" "$message"
+    }
+
+    # Convenience functions for specific log levels
+    log_debug() {
+        log "DEBUG" "$1"
+    }
+
+    log_info() {
+        log "INFO" "$1"
+    }
+
+    log_success() {
+        log "SUCCESS" "$1"
+    }
+
+    log_warning() {
+        log "WARNING" "$1"
+    }
+
+    log_error() {
+        log "ERROR" "$1"
+    }
+
+    # If script is executed directly, provide example usage
+    if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+        log_info "This script is meant to be sourced, not executed directly."
+        log_info "Example usage: source $BASH_SOURCE"
+    fi
+}
+
+# Execute main function
+main
