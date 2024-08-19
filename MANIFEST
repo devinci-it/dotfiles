@@ -30,6 +30,7 @@ src/bash/aliases/stubs/func-alias.stub
 src/bash/bashrc
 src/bash/bin/display_line.sh
 src/bash/bin/env
+src/bash/bin/log
 src/bash/install.sh
 src/bash/paths/README.md
 src/bash/paths/install.sh
