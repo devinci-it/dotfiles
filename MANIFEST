@@ -72,6 +72,9 @@ src/python/pipenv/README.md
 src/python/pipenv/installation.sh
 src/python/pyenv/README.md
 src/python/pyenv/pyenv-init
+src/services/ssh-agent/README.md
+src/services/ssh-agent/install.sh
+src/services/ssh-agent/sshaddrc
 src/system/administration/.env
 src/system/administration/storage/refs/lvm-wallkthrough.md
 src/system/administration/user_management/.env
@@ -89,6 +92,8 @@ src/system/mariadb/config.ini
 src/system/mariadb/cronjob_script_generator.sh
 src/system/mariadb/database_backup.sh
 src/system/mariadb/database_init.sh
+src/system/motd/README.md
+src/system/motd/motd-scripts/00-system-info.sh
 src/system/web/certbot/installation.sh
 src/system/web/certbot/renew.sh
 src/vim/README.md

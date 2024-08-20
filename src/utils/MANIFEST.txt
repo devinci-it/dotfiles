@@ -1,0 +1,14 @@
+index.sh
+SHA2-256(index.sh)= 3298d64b3a0ae4ac3e2b0581c25c33b5d78325c74145ba8b3c151be81057dea9
+
+logger.sh
+SHA2-256(logger.sh)= 727bca53a33d85c11820f86b8f008eac61b636936a2ff41e25c04af12d760122
+
+overwrite.sh
+SHA2-256(overwrite.sh)= 69fdbe31f06b54c5f9db165e4e5256c9a95e30e8bfa4522fff2290149284d386
+
+create_dir.sh
+SHA2-256(create_dir.sh)= 929391481b200f488dfecab8f8d882f256a502ca0aade153bfbb63106124e837
+
+check_exists.sh
+SHA2-256(check_exists.sh)= 57d3dfbc31720cccd421a976af833a6e878b32a4bf9e8d6c3f910912e2df256f
