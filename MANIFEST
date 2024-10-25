@@ -89,6 +89,12 @@ src/system/mariadb/config.ini
 src/system/mariadb/cronjob_script_generator.sh
 src/system/mariadb/database_backup.sh
 src/system/mariadb/database_init.sh
+src/system/motd/README.md
+src/system/motd/motd-scripts/00-system-info.sh
+src/system/motd/motd-scripts/01-system-status.sh
+src/system/motd/motd-scripts/02-active-users.sh
+src/system/motd/motd-scripts/03-maintenance.sh
+src/system/motd/motd-scripts/04-legal-notice.sh
 src/system/web/certbot/installation.sh
 src/system/web/certbot/renew.sh
 src/vim/README.md
